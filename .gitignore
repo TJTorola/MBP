@@ -1,4 +1,6 @@
+storage
 .env
+
 .vagrant
 bootstrap.sh
 Vagrantfile
