@@ -34,6 +34,7 @@ function get_posts()
 {
 	$files = scandir('../storage/posts');
 	$files = array_filter($files, "markdown_file");
+	$files = array_reverse($files);
 	$posts = [];
 
 	foreach ($files as $file) {
