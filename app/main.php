@@ -1,6 +1,6 @@
 <?php
 
-var_dump($_GET);
+var_dump($_SERVER['REDIRECT_URL']);
 $path 	= $_GET['path'];
 $files 	= scandir('../storage/posts');
 $files 	= array_filter($files, "markdown_file");
