@@ -1,8 +1,31 @@
 <?php
 
+function get_path()
+{
+	if ($_SERVER['request_url'] != null) {
+		return ltrim($_SERVER['request_url'], "\\");
+	} else if ($_SERVER['request_uri'] != null) {
+		return ltrim($_SERVER['request_uri'], "\\");
+	}
+}
+
 function markdown_file($file)
 {
 	return pathinfo($file, PATHINFO_EXTENSION) == 'md';
+}
+
+function get_files()
+{
+	$files = scandir('../storage/posts');
+	return array_filter($files, "markdown_file");
+}
+
+function post_requested()
+{
+	$path = get_path();
+	$files = get_files();
+
+	return in_array("$path.md", $files);
 }
 
 function to_title($name)
