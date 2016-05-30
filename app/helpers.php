@@ -2,10 +2,11 @@
 
 function get_path()
 {
-	if ($_SERVER['request_url'] != null) {
-		return ltrim($_SERVER['request_url'], "\\");
-	} else if ($_SERVER['request_uri'] != null) {
-		return ltrim($_SERVER['request_uri'], "\\");
+	var_dump($_SERVER);
+	if (isset($_SERVER['REQUEST_URL'])) {
+		return ltrim($_SERVER['REQUEST_URL'], "\\");
+	} else if (isset($_SERVER['REQUEST_URI'])) {
+		return ltrim($_SERVER['REQUEST_URI'], "\\");
 	}
 }
 
