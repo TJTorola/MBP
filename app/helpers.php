@@ -2,11 +2,10 @@
 
 function get_path()
 {
-	var_dump($_SERVER);
 	if (isset($_SERVER['REQUEST_URL'])) {
-		return ltrim($_SERVER['REQUEST_URL'], "\\");
+		return ltrim($_SERVER['REQUEST_URL'], "/");
 	} else if (isset($_SERVER['REQUEST_URI'])) {
-		return ltrim($_SERVER['REQUEST_URI'], "\\");
+		return ltrim($_SERVER['REQUEST_URI'], "/");
 	}
 }
 
@@ -38,8 +37,9 @@ function to_title($name)
 	return implode(' ', $words);
 }
 
-function get_post($file_name)
+function get_post()
 {
+	$file_name 	= get_path();
 	$path 			= "../storage/posts/$file_name.md";
 	$contents 	= file_get_contents($path);
 	$modified 	= filemtime($path);
